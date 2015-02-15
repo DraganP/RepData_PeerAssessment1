@@ -34,12 +34,12 @@ str(activity)
 For this part of the assignment, you can ignore the missing values in the dataset.
 
 1.  Make a histogram of the total number of steps taken each day.  
-- Notice: I want to show this as a number of steps walked each day, not as a frequency of occurencies of steps walked, therefore I am using the barplot function, not the histogram function.
+
 
 
 ```r
 stepsDay <- aggregate(steps ~ date, data = activity, FUN = sum)
-barplot(stepsDay$steps, names.arg = stepsDay$date, col = "darkblue", main = "Histogram of steps taken each day", xlab = "Date", ylab = "Number of steps per day")
+hist(stepsDay$steps, main = paste("Histogram of steps taken each day"), col="darkblue", xlab="Number of steps per day")
 ```
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
@@ -126,12 +126,11 @@ activityFillIn$steps <- with(activityFillIn, impute(steps, mean))
 
 
 4. Make a histogram of the total number of steps taken each day and calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?  
-- Notice: just as for the first histogram shown above, I want to show this as a number of steps walked each day, not as a frequency of occurencies of steps walked, therefore I am using the barplot function, not the histogram function.
 
 
 ```r
 stepsDayF <- aggregate(steps ~ date, data = activityFillIn, FUN = sum)
-barplot(stepsDayF$steps, names.arg = stepsDayF$date, col = "darkblue", main = "Histogram of steps taken each day, filled in missing data", xlab = "Date", ylab = "Number of steps per day")
+hist(stepsDayF$steps, main = paste("Histogram of steps taken each day, filled in missing data"), col="darkblue", xlab="Number of steps per day")
 ```
 
 ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
